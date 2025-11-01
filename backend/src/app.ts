@@ -1,21 +1,8 @@
 import express, { Request, Response } from 'express';
 import rateLimit from 'express-rate-limit';
 import cors from 'cors';
-import pinoHttp from 'pino-http';
-import pino from 'pino';
 import { allowedOrigins } from './config/cors.config';
 import { rateLimitConfig } from './config/ratelimit.config';
-
-const logger = pino({
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      colorize: true,
-      translateTime: 'SYS:standard',
-      ignore: 'pid,hostname',
-    },
-  },
-});
 
 const app = express();
 
@@ -35,7 +22,6 @@ app.use(cors(corsOptions));
 app.use(rateLimit(rateLimitConfig));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(pinoHttp({ logger }));
 
 app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
