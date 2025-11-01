@@ -2,6 +2,7 @@
 - Don't add code comments.
 - Don't add code comments.
 - File naming conventions should follow <name>.<module>.<extension>.
-- The /server directory is for backend code only.
+- The /backend directory is for backend code only.
 - Make sure to follow express best practices when writing server code.
 - Make sure to follow NextJs best practices when writing frontend code.
+- We server the frontend (NextJs) from the express app in production.

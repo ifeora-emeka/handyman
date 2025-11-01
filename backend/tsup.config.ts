@@ -1,15 +1,13 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ['./server.ts'],
+  entry: ['src/server.ts'],
   format: ['cjs'],
-  target: 'node20',
-  outDir: '../dist/server',
+  outDir: 'dist',
   clean: true,
   sourcemap: true,
   splitting: false,
-  minify: false,
-  shims: true,
-  dts: false,
   treeshake: true,
+  minify: false,
+  onSuccess: 'node dist/server.js',
 });
