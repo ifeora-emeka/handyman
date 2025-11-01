@@ -1,10 +1,11 @@
 import dotenv from 'dotenv';
+import { env } from './env.config';
 
 dotenv.config();
 
 export const config = {
-  port: process.env.PORT || 3000,
-  jwtSecret: process.env.JWT_SECRET || '',
-  nodeEnv: process.env.NODE_ENV || 'development',
-  isDevelopment: process.env.NODE_ENV !== 'production',
+  port: env.PORT,
+  nodeEnv: env.NODE_ENV,
+  isDevelopment: env.isDevelopment,
+  databaseUrl: env.DATABASE_URL,
 };
